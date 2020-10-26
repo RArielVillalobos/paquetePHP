@@ -7,7 +7,8 @@ class AccessHandler
 {
     public static function check ($role)
     {
-        return 'admin' == $role;
+
+        return Authenticator::check() && Authenticator::user()->role == $role;
     }
 
 }
