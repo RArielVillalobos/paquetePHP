@@ -4,7 +4,7 @@
 namespace Styde;
 
 
-class SessionFileDrive
+class SessionFileDrive implements SessionDriverInterface
 {
     public  function load()
     {

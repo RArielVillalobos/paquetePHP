@@ -4,7 +4,7 @@
 namespace Styde;
 
 
-class Authenticator
+class Authenticator implements AuthenticatorInterface
 {
     protected $user;
     protected $session;
