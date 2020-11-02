@@ -3,16 +3,25 @@
 use Styde\AccessHandler as Access;
 class AccessHandlerTest extends \PHPUnit\Framework\TestCase
 {
+
     public function test_grant_access()
     {
+        $sessionFileDriver = new \Styde\SessionFileDrive();
+        $sessionManager = new \Styde\SessionManager($sessionFileDriver);
+        $auth = new \Styde\Authenticator($sessionManager);
+        $access = new Access($auth);
         $this->assertTrue(
-            Access::check('admin')
+            $access->check('admin')
         );
     }
 
     public function test_deny_access()
     {
-        $this->assertFalse(Access::check('sub-admin'));
+        $sessionFileDriver = new \Styde\SessionFileDrive();
+        $sessionManager = new \Styde\SessionManager($sessionFileDriver);
+        $auth = new \Styde\Authenticator($sessionManager);
+        $access = new Access($auth);
+        $this->assertFalse($access->check('sub-admin'));
     }
 
 }

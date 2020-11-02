@@ -6,7 +6,7 @@ namespace Styde;
 
 class SessionFileDrive
 {
-    public static function load()
+    public  function load()
     {
         $file = __DIR__ . '/../storage/session/session.json';
         if(file_exists($file))

@@ -5,10 +5,16 @@ namespace Styde;
 
 class AccessHandler
 {
-    public static function check ($role)
+    protected $auth;
+    public function __construct(Authenticator $auth)
+    {
+        $this->auth = $auth;
+    }
+
+    public  function check ($role)
     {
 
-        return Authenticator::check() && Authenticator::user()->role == $role;
+        return $this->auth->check() && $this->auth->user()->role == $role;
     }
 
 }
